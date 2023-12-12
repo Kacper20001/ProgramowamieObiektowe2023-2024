@@ -4,35 +4,39 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace lab3
+namespace zad._1
 {
-    internal class Reader: Person
+    internal class Reader : Person
     {
         private List<Book> readBooks;
-
-        public Reader(string firstName, string lastName, int wiek) :
-            base(firstName, lastName, wiek)
+        public List<Book> ReadBooks
+        {
+            get { return readBooks; }
+        }
+    
+    public Reader(string firstName, string lastName, int age) :
+            base(firstName, lastName, age)
         {
             readBooks = new List<Book>();
         }
-
-        public void AddReadBook (Book book)
+        public void AddBook (Book book)
         {
             readBooks.Add(book);
         }
-
-        public void ViewBook()
+        public void ViewBooks()
         {
-            Console.WriteLine($"Lista przeczytanych książek przez użykownika: {FirstName}-{LastName}-{Wiek}");
+            Console.WriteLine("Lista przeczytanych książek:");
             foreach (Book book in readBooks)
             {
                 Console.WriteLine(book.Title);
             }
         }
-        public void View_booK_person() 
+
+        public override void View()
         {
             base.View();
-            ViewBook();
+            ViewBooks();
         }
+        
     }
 }

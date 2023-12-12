@@ -1,30 +1,61 @@
-﻿namespace lab3
+﻿namespace zad._1
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            Person author1 = new Person("Imię_autora1", "Nazwisko_autora1", 30);
-            Person author2 = new Person("Imię_autora2", "Nazwisko_autora2", 50);
+            List<Person> peopleList = new List<Person>();
 
-            Book book1 = new Book("Książka 1", author1, new DateTime(2011, 1, 15));
-            Book book2 = new Book("Książka 2", author2, new DateTime(2012, 2, 17));
-            Book book3 = new Book("Książka 3", author1, new DateTime(2013, 3, 1));
-            Book book4 = new Book("Książka 4", author2, new DateTime(2014, 11, 23));
-            Book book5 = new Book("Książka 5", author1, new DateTime(2015, 7, 9));
+            Person author1 = new Person("Jan", "Kowalski", 32);
+            Person author2 = new Person("Zbigniew", "Nowak", 45);
+/*            author1.View();
+*/
+            Book book1 = new Book("Book1", author1, new DateTime(2011, 1, 15));
+            Book book2 = new Book("Book2", author2, new DateTime(2009, 7, 17));
+            Book book3 = new Book("Book3", author1, new DateTime(2020, 10, 18));
+            Book book4 = new Book("Book4", author2, new DateTime(2022, 11, 23));
+            /*            book2.View();
+            */
 
-            Reader reader1 = new Reader("Imię_czytelnika1", "Nazwisko_czytelnika1", 20);
-            Reader reader2 = new Reader("Imię_czytelnika2", "Nazwisko_czytelnika2", 34);
+            Reader reader1 = new Reader("Magdalena", "Kowalska", 23);
+            Reader reader2 = new Reader("Kasia", "Jasińska", 43);
+            Reader reader3 = new Reader("Kacper", "Wasilewski", 22);
 
-            reader1.AddReadBook(book1);
-            reader1.AddReadBook(book2);
-            reader1.AddReadBook(book3);
+            reader1.AddBook(book1);
+            reader1.AddBook(book2);
+            reader2.AddBook(book3);
+            reader2.AddBook(book4);
+            reader3.AddBook(book2);
 
-            reader2.AddReadBook(book4);
-            reader2.AddReadBook(book5);
+            /*            reader1.ViewBook();
+             *            
+            */
+            Person o = new Reader("Kuba", "Błaszczyk", 50);
+            /*            o.View();
+            */
+            Reviewer reviewer1 = new Reviewer("Rafał", "Szpunar", 73);
+            Reviewer reviewer2 = new Reviewer("Olivia", "Kielar", 80);
 
-            reader1.ViewBook();
-            reader2.View_booK_person();
+            reviewer1.AddBook(book1);
+            reviewer1.AddBook(book2);
+            reviewer1.AddBook(book3);
+
+            reviewer2.AddBook(book2);
+
+            /*            reviewer1.PrintReviews();*/
+
+            peopleList.Add(reader1);
+            peopleList.Add(reader2);
+            peopleList.Add(reader3);
+            peopleList.Add(reviewer1);
+            peopleList.Add(reviewer2);
+
+
+            AdventureBook adventureBook = new AdventureBook("AdventureBook1", new Person("Author1", "LastName1", 30), new DateTime(2011, 1, 15), "Character1");
+            DocumentaryBook documentaryBook = new DocumentaryBook("DocumentaryBook1", new Person("Author2", "LastName2", 40), new DateTime(2009, 7, 17), "Topic1");
+            reader1.AddBook(adventureBook);
+            reader2.AddBook(documentaryBook);
+            reader1.ViewBooks();
         }
     }
 }

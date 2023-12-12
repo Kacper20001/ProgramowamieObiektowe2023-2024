@@ -4,34 +4,32 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace lab3
+namespace zad._1
 {
     internal class Book
     {
-        private string title;
+        protected string title;
         private Person author;
-        private DateTime data_wydania;
+        private DateTime dateOfPublication;
 
-        public string Title { 
-            get { return title; } 
-            set { }
-        }
-        public DateTime Data_wydania
+        public string Title {  get { return title; } set {  title = value; } }
+        public DateTime DateOfPublication { get {  return dateOfPublication; } set {  dateOfPublication = value; } }
+
+        public Book(string title, Person author, DateTime dateOfPublication)
         {
-            get { return data_wydania; }
-            set { }
-        }
-        public Book(string title, Person author, DateTime data_wydania)
-        {
-            this.title = title;
+            Title = title;
             this.author = author;
-            this.data_wydania = data_wydania;
+            DateOfPublication = dateOfPublication;
         }
-        public void View_books()
+        public virtual void View()
         {
-            Console.WriteLine($"Tytuł: {title}");
-            Console.WriteLine($"Imię autora: {author.FirstName}, nazwisko: {author.LastName}, wiek: {author.Wiek}");
-            Console.WriteLine($"Data wydania: {data_wydania}");
+            Console.WriteLine($"Title: {title}");
+            Console.WriteLine($"Date of publication: {dateOfPublication}");
+            Console.WriteLine($"First name: {author.FirstName}");
+            Console.WriteLine($"Last name: {author.LastName}");
+            Console.WriteLine($"Age: {author.Age}");
+
         }
+
     }
 }

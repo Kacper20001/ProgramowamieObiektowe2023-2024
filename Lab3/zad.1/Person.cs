@@ -4,43 +4,28 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace lab3
+namespace zad._1
 {
     internal class Person
     {
         private string firstName;
         private string lastName;
-        private int wiek;
-
-        public string FirstName
-        {
-            get { return firstName; }
-            set { }
+        private int age;
+        public string FirstName { get { return firstName; } set { firstName = value; } }
+        public string LastName { get { return lastName; } set { lastName = value; } }
+        public int Age { get { return age;} set { age = value; } }
+        
+        public Person(string firstName, string lastName, int Age) {
+            FirstName = firstName;
+            LastName = lastName;
+            Age = age; 
         }
 
-        public string LastName
+        public virtual void View()
         {
-            get { return lastName; }
-            set { }
-        }
-        public int Wiek
-        {
-            get { return wiek; }
-            set { }
-        }
-
-        public Person(string firstName, string lastName, int wiek)
-        {
-            this.firstName = firstName;
-            this.lastName = lastName;
-            this.wiek = wiek;
-        }
-
-        public void View()
-        {
-            Console.WriteLine($"Imię: {firstName}");
-            Console.WriteLine($"Nazwisko: {lastName}");
-            Console.WriteLine($"Wiek: {wiek}");
+            Console.WriteLine($"First Name: {firstName}");
+            Console.WriteLine($"Last Name: {lastName}");
+            Console.WriteLine($"Age: {age}");   
         }
     }
 }
